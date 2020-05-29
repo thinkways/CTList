@@ -13,6 +13,6 @@ RUN apk update && \
     mkdir /conf && \
     rm -rf /var/cache/apk/*
 
-VOLUME [/conf]
+VOLUME /conf
 WORKDIR /ctlist
-ENTRYPOINT ["./CTList" "-a" "b9eb2fee7758ebbab0354ebe88190e36" "-c" "/conf/config.json" "-t" "/conf/index.html" "-bind" "0.0.0.0"]
+ENTRYPOINT ./CTList -a b9eb2fee7758ebbab0354ebe88190e36 -c /conf/config.json -t /conf/index.html -bind 0.0.0.0
