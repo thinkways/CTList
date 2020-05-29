@@ -2,9 +2,6 @@ FROM alpine
 MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 
 CMD ["/bin/sh"]
-RUN /bin/sh -c apk add --update tzdata
-ENV TZ=Asia/Shanghai
-
 RUN /bin/sh -c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*
 
 VOLUME [/conf]
