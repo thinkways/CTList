@@ -1,5 +1,4 @@
-FROM alpine
-MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
+ADD file:e69d441d729412d24675dcd33e04580885df99981cec43de8c9b24015313ff8e in / 
 
 CMD ["/bin/sh"]
 /bin/sh -c apk add --update tzdata
