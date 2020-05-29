@@ -2,7 +2,9 @@ FROM alpine
 MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 
 CMD ["/bin/sh"]
-RUN /bin/sh -c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*
+/bin/sh -c apk add --no-cache tzdata &&     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&     echo "Asia/Shanghai" > /etc/timezone &&     apk del tzdata &&     rm -rf /var/cache/apk/*
+
+/bin/sh -c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*
 
 VOLUME [/conf]
 WORKDIR /ctlist
