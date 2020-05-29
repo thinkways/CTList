@@ -1,5 +1,4 @@
 FROM alpine
-
 RUN apk update && \
     apk add --no-cache openssh-server tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
