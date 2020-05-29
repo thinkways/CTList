@@ -1,9 +1,17 @@
 FROM alpine
-MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 
-CMD ["/bin/sh", "-c apk add --no-cache tzdata &&     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&     echo "Asia/Shanghai" > /etc/timezone &&     apk del tzdata &&     rm -rf /var/cache/apk/*"]
-
-CMD ["/bin/sh", "-c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*"]
+RUN apk update && \
+    apk add --no-cache openssh-server tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone && \
+    apk del tzdata &&\
+    wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList && \
+    mkdir /ctlist && \
+    cp CTList /ctlist/CTList && \
+    chmod +x /ctlist/CTList && \
+    rm -rf CTList && \
+    mkdir /conf && \
+    rm -rf /var/cache/apk/*
 
 VOLUME [/conf]
 WORKDIR /ctlist
