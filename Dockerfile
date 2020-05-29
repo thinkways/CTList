@@ -1,10 +1,11 @@
-ADD file:e69d441d729412d24675dcd33e04580885df99981cec43de8c9b24015313ff8e in / 
+FROM alpine
+MAINTAINER Ryan Lieu <github-benzBrake@woai.ru>
 
 CMD ["/bin/sh"]
-/bin/sh -c apk add --update tzdata
+RUN /bin/sh -c apk add --update tzdata
 ENV TZ=Asia/Shanghai
 
-/bin/sh -c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*
+RUN /bin/sh -c wget --no-check-certificate https://raw.githubusercontent.com/iiiiiii1/CTList/master/exec/amd64/linux/CTList     && mkdir /ctlist     && cp CTList /ctlist/CTList     && chmod +x /ctlist/CTList     && rm -rf CTList     && mkdir /conf     && rm -rf /var/cache/apk/*
 
 VOLUME [/conf]
 WORKDIR /ctlist
