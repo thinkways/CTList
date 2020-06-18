@@ -12,7 +12,7 @@ RUN apk update && \
     mkdir /conf && \
     rm -rf /var/cache/apk/*
 
-ENV AUTH_TOKEN
+ENV AUTH_TOKEN=aqwertyuiopasdfghjklzxcvbnm123456
 
 VOLUME /conf
 WORKDIR /ctlist
